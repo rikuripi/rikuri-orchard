@@ -20,7 +20,7 @@ A fresh local clone of baseline commit 2f9a15a passed all 21 tests. Its app.py s
 
 The five executable/UI/test files matched the installed working Orchard byte-for-byte. Git ignore checks covered the dedicated sign-in profile, .env, Codex credentials, databases and sidecars, disposable runs, logs, caches and page backups. A known-signature credential scan found no such values in the selected source/docs; it is not an exhaustive secret-detection guarantee. Only the explicit source/docs/test manifest was staged.
 
-The intended remote is https://github.com/rikuripi/rikuri-orchard.git. GitHub's connected app, git ls-remote and the local gh repository request returned not-found. Local gh identified its signed-in account as hchengit. No push occurred, and repository existence/private visibility/default branch/write permission remain unconfirmed. Owner must confirm the URL and repository access before the remote portion of M0 can be completed.
+The intended remote is https://github.com/rikuripi/rikuri-orchard.git. GitHub's connected app, git ls-remote and the local gh repository request returned not-found. Local gh identified its signed-in account as hchengit. That initial attempt made no push. After the owner granted access, GitHub confirmed the repository exists, is private, uses main as its default branch, and permits hchengit to push. The remote had no refs before import. Publish the prepared baseline using a normal main push, then verify its remote commit and fresh remote checkout.
 
 ## Pending
 
