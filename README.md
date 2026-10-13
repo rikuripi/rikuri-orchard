@@ -55,3 +55,9 @@ Read [the roadmap](docs/ROADMAP.md), [initial tool-scoping report](docs/TOOL_SCO
 Older starter docs are retained as design history. ROADMAP.md and the current executable limits govern this baseline; planned capabilities in older files must not be presented as implemented.
 
 No license has been chosen by the owner yet. Do not assume redistribution rights; check third-party licenses before incorporating their code. Private repository visibility is intended, but must be confirmed on GitHub.
+
+## Repository hygiene
+
+Git tracks source, reusable regression tests and project documentation. macOS/Linux metadata, editor recovery files, private profiles/data, Python/frontend caches, build output and temporary work are ignored. Keep one-off diagnostics in work/ or scratch/ and remove them after use when there is no repeat purpose. Automated tests use disposable temporary directories and stop their child processes.
+
+Keep tests/ regression checks: they are reusable safety evidence, not disposable junk. Do not use blanket cleanup commands on owner data. Existing product runs and backups remain local and retained for review/recovery until an explicit retention policy is implemented; .gitignore does not delete them.

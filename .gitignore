@@ -34,3 +34,59 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# macOS Finder, AppleDouble, indexing and volume metadata
+.DS_Store?
+._*
+.AppleDouble/
+.LSOverride
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+.DocumentRevisions-V100/
+.apdisk
+__MACOSX/
+Network Trash Folder/
+Temporary Items/
+
+# Linux desktop, trash and filesystem temporary files
+.directory
+.Trash-*/
+.nfs*
+.fuse_hidden*
+
+# Editor swap, recovery and patch leftovers
+*~
+*.swp
+*.swo
+*.swn
+.#*
+\#*#
+*.bak
+*.orig
+*.rej
+
+# Disposable scratch and local caches
+tmp/
+temp/
+scratch/
+.cache/
+
+# Python tooling, coverage and generated packages
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.egg-info/
+build/
+dist/
+
+# Optional frontend tooling artifacts
+node_modules/
+.npm/
