@@ -16,7 +16,11 @@ Protocol fixtures simulate model events and test output. They are not evidence o
 
 ## Repository baseline checks
 
-The repository import will be checked using a fresh local clone, including the complete test suite, localhost HTTP startup and private-path exclusions. Its results are recorded separately after those checks run.
+A fresh local clone of baseline commit 2f9a15a passed all 21 tests. Its app.py started on an ephemeral localhost port using a disposable database; health reported Codex disabled, the approved heading was served, and Seed Box HTTP create/list succeeded. The test server was stopped afterwards. These ordinary localhost checks are separate from the earlier native-sandbox evidence.
+
+The five executable/UI/test files matched the installed working Orchard byte-for-byte. Git ignore checks covered the dedicated sign-in profile, .env, Codex credentials, databases and sidecars, disposable runs, logs, caches and page backups. A known-signature credential scan found no such values in the selected source/docs; it is not an exhaustive secret-detection guarantee. Only the explicit source/docs/test manifest was staged.
+
+The intended remote is https://github.com/rikuripi/rikuri-orchard.git. GitHub's connected app, git ls-remote and the local gh repository request returned not-found. Local gh identified its signed-in account as hchengit. No push occurred, and repository existence/private visibility/default branch/write permission remain unconfirmed. Owner must confirm the URL and repository access before the remote portion of M0 can be completed.
 
 ## Pending
 
