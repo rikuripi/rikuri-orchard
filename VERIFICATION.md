@@ -25,3 +25,9 @@ The intended remote is https://github.com/rikuripi/rikuri-orchard.git. GitHub's 
 ## Pending
 
 In-app review/approval/apply and recovery; resumable native approvals; independent acceptance checks; robust cancellation and process/resource management; hard spend/resource limits; effective capability audits (including machine-managed configuration); more representative native tasks; other OS/runtime versions; Claude integration; third-party factory comparisons by experiment; Rikuri PI/rikurinode pilots; remote hosting.
+
+## Comparison preparation
+
+The project suite now has 27 passing tests: the existing 21 plus six reusable authored-fixture checks. The new cases demonstrate exact-diff acceptance for a heading and behavioral acceptance of fractional means independent of a weak green baseline suite. These checks execute only authored synthetic fixture code, not provider outputs. Fixture projects use TemporaryDirectory and subprocess timeouts and clean up after use. No live comparative model run, new credential access or package installation occurred. The existing native worker's fixed snapshot remains unchanged and includes its original 21 application/adapter tests.
+
+Read-only installed help/version evidence and current official documentation informed the backend decision and REVIEW_APPLY_CONTRACT.md. Claude 2.1.282 has not been declared isolated or benchmarked; its version/authentication differences remain explicit. The M2 UI is specified, not implemented in this commit.

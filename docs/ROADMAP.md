@@ -16,7 +16,7 @@ Each milestone needs one scoped task, an owner-recognizable outcome, permitted p
 
 ## First task after baseline
 
-M1: complete a concrete comparison plan and decide the minimum integration surface for M2. The actual comparison runs require bounded tasks, account/spend consent and isolated fixtures. M2 is the next implementation milestone once its acceptance contract is settled.
+M1: complete a concrete comparison plan and decide the minimum integration surface for M2. The actual comparison runs require bounded tasks, account/spend consent and isolated fixtures. The read-only installed-tool audit, reusable comparison fixtures and M2 contract are now prepared. Live comparative runs remain gated by explicit task/account/budget consent and isolation; no speed/cost ranking is proven. M2 is the next implementation milestone using the tested Codex backend and [its acceptance contract](REVIEW_APPLY_CONTRACT.md).
 
 ## M2 acceptance details
 

@@ -50,7 +50,7 @@ Hard token/dollar, memory and workspace disk-growth caps are not implemented. Ne
 
 ## Development plan
 
-Read [the roadmap](docs/ROADMAP.md), [initial tool-scoping report](docs/TOOL_SCOPING.md), [verification record](VERIFICATION.md) and [project charter](docs/PRODUCT_CHARTER.md).
+Read [the roadmap](docs/ROADMAP.md), [tool-scoping report](docs/TOOL_SCOPING.md), [review/apply contract](docs/REVIEW_APPLY_CONTRACT.md) and [comparison pack](benchmarks/README.md), [verification record](VERIFICATION.md) and [project charter](docs/PRODUCT_CHARTER.md).
 
 Older starter docs are retained as design history. ROADMAP.md and the current executable limits govern this baseline; planned capabilities in older files must not be presented as implemented.
 

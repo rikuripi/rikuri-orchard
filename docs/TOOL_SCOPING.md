@@ -37,3 +37,23 @@ Prepare small synthetic projects with no owner data or secrets. The same tasks a
 For each run record tool/model versions, input hashes, allowed paths, effective capabilities, test and outcome evidence, elapsed time, provider usage/spend where actually reported, manual interventions and remaining unknowns. Mark unavailable costs unknown. Never substitute the model's success message for observed behavior.
 
 Start with Codex and Claude sequentially. Additional factories are reference/reuse candidates until measurements justify another backend. Backend-internal orchestration must remain inside the assigned contract; a faster result does not authorize a larger scope. Evaluate credentials, untrusted project instructions, inherited tools/hooks and new plugins before giving them real Rikuri files.
+
+## Local capability audit and decision — October 13, 2026
+
+Read-only local version/help checks found Codex 0.162.0-alpha.2 and Claude Code 2.1.282. OpenHands and Aider were not found on PATH; this does not prove they are absent everywhere. No packages were installed, credentials read or new model runs started.
+
+Codex remains the implementation backend for the next review/apply increment, based on the already-observed bounded task, native permission preflight and separately approved application. Its current adapter has no hard dollar/token cap and stops rather than resumes additional approvals. Its native turn count must not be equated to Claude agentic-turn counts. Native capability/configuration inheritance remains an audit item.
+
+Installed Claude help supports print mode, JSON output, bare mode, explicit setting sources, strict MCP configuration, tool selection, no-session-persistence and an estimated API-spend flag. Its permission modes differ from the older examples. `--max-turns` was described by current official documentation but did not appear in the inspected installed help; treat support as unverified. No trial inference was used to test it.
+
+Claude docs state that pre-2.1.286 bare-mode isolation/background behavior differed. The installed 2.1.282 is below that threshold, so a new-version behavior must not be assumed. Bare-mode help also specifies API-key/helper authentication rather than native subscription credentials. Authentication route and terms need an explicit owner choice, and installed-version behavior needs controlled verification before a Claude worker is enabled. Do not use permission-bypass flags as an integration shortcut.
+
+Programmatic permission callbacks are useful, but are not universal enforcement: official Claude permission docs describe earlier rules/modes that can approve a tool before the callback. An OS sandbox and explicitly verified tool/configuration surface remain required. The documented spend flag uses estimated costs and can overshoot; do not describe it as a hard billed-dollar ceiling.
+
+**Decision:** retain the tested Codex interface; specify the provider-neutral [review/apply contract](REVIEW_APPLY_CONTRACT.md); defer enabling Claude until authentication/version/isolation gates are satisfied. Study OpenHands/Aider before choosing any dependency. No speed/cost/success-rate winner is established.
+
+A [reusable comparison pack](../benchmarks/README.md) now provides two synthetic cases and independent outcome gates. Six offline checks prove that an unchanged heading/unrelated edits are rejected and that a green weak mean-test suite can still miss fractional behavior. Baseline project tests now total 27 (21 application/adapter tests plus six comparison-tooling tests). The current fixed native Orchard snapshot retains its existing 21 application tests; the benchmark tooling is not silently added to model context.
+
+M1 is research/preparation complete for the M2 implementation decision, but live comparative benchmarking remains pending explicit case/account/budget approval and adapter isolation. The current Orchard adapter cannot run this separate pack without scoped integration. Do not label fixture checks as live provider measurements.
+
+Further primary sources: [Claude CLI reference](https://code.claude.com/docs/en/cli-reference), [Claude SDK permissions](https://code.claude.com/docs/en/agent-sdk/permissions), and the previously listed programmatic execution and Codex references. Vendor documentation and installed help are distinct evidence sources; record version mismatches instead of guessing.
