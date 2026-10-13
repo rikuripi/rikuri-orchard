@@ -1,0 +1,36 @@
+# Local credentials and sign-in profiles
+.env
+.env.*
+!.env.example
+.orchard-codex/
+.orchard-*/
+auth.json
+**/auth.json
+.codex/
+.claude/
+*.pem
+*.key
+
+# Owner data and disposable execution
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+runs/
+work/
+logs/
+*.log
+.sqlite-fix-backup/
+*.before-*
+*.tmp
+
+# Python and local editor state
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
