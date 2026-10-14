@@ -14,9 +14,9 @@ Each milestone needs one scoped task, an owner-recognizable outcome, permitted p
 | M5 — Rikuri pilots | Read-only project review followed by one small explicitly approved isolated change | Respect each project's AGENTS.md/standards; protect existing work; reproduce tests; inspect outcome; apply separately with approval | Autonomous broad rewrites |
 | M6 — Broader deployment | Optional private remote operation after local reliability is proven | Authentication, access controls, secure transport, isolated execution, resource controls and tested backup/recovery | Public exposure by default |
 
-## First task after baseline
+## Current progress
 
-M1: complete a concrete comparison plan and decide the minimum integration surface for M2. The actual comparison runs require bounded tasks, account/spend consent and isolated fixtures. The read-only installed-tool audit, reusable comparison fixtures and M2 contract are now prepared. Live comparative runs remain gated by explicit task/account/budget consent and isolation; no speed/cost ranking is proven. M2 is the next implementation milestone using the tested Codex backend and [its acceptance contract](REVIEW_APPLY_CONTRACT.md).
+M1: complete a concrete comparison plan and decide the minimum integration surface for M2. The actual comparison runs require bounded tasks, account/spend consent and isolated fixtures. The read-only installed-tool audit, reusable comparison fixtures and M2 contract are now prepared. Live comparative runs remain gated by explicit task/account/budget consent and isolation; no speed/cost ranking is proven. M2 is implemented for existing-file text changes using the tested Codex backend and [its acceptance contract](REVIEW_APPLY_CONTRACT.md). All 52 repository tests pass, including 46 application tests inside native Codex execution. Browser apply and recovery were verified with an explicitly labeled authored fixture. Installing v0.3 into the owner’s running copy and a fresh authenticated model task remain pending. M3 has not started.
 
 ## M2 acceptance details
 

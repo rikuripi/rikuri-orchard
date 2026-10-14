@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-FILES = ('app.py', 'crew.py', 'index.html', 'tests/test_app.py', 'tests/test_crew.py')
+FILES = ('app.py', 'crew.py', 'review.py', 'index.html', 'tests/test_app.py', 'tests/test_crew.py', 'tests/test_review.py')
 LIMITS = dict(seconds=180, turns=1, retries=0, wire_bytes=1048576, snapshot_bytes=2097152)
 SECRET = re.compile(r'sk-[A-Za-z0-9_-]{12,}|(?i:bearer)\s+[A-Za-z0-9._-]{12,}|(?i:(?:api_key|password|secret)\s*[=:]\s*[\"\'])[A-Za-z0-9_-]{12,}')
 
@@ -179,6 +179,7 @@ class CodexAdapter:
                   str(Path(sys.base_prefix).resolve()): 'read',
                   str(Path(sys.executable).parent): 'read',
                   str(Path(sys.executable).resolve().parent): 'read'}
+        grants.update({str(workspace / file): 'read' for file in FILES if file.startswith('tests/')})
         sqlite_grants = sqlite_runtime_grants()
         grants.update(sqlite_grants)
         sqlite_dirs = sorted(path for path in sqlite_grants if Path(path).is_dir())
@@ -309,6 +310,8 @@ class Crew:
         with self.connect() as conn:
             conn.execute('CREATE TABLE IF NOT EXISTS tasks (id TEXT PRIMARY KEY, request TEXT NOT NULL, status TEXT NOT NULL, evidence TEXT NOT NULL, receipt TEXT NOT NULL)')
             conn.execute("UPDATE tasks SET status='BLOCKED', evidence=evidence || '\nApplication restarted during execution; no automatic retry.' WHERE status='RUNNING'")
+        from review import ReviewStore
+        self.reviews = ReviewStore(self.db, self.root, self.source, FILES, self.lock)
 
     def connect(self):
         conn = sqlite3.connect(self.db, timeout=5, factory=ClosingConnection)
@@ -317,7 +320,11 @@ class Crew:
 
     def list(self):
         with self.connect() as conn:
-            return [dict(r) | {'receipt': json.loads(r['receipt'])} for r in conn.execute('SELECT * FROM tasks ORDER BY rowid DESC')]
+            tasks = [dict(r) | {'receipt': json.loads(r['receipt'])} for r in conn.execute('SELECT * FROM tasks ORDER BY rowid DESC')]
+            states = {r['task_id']: r['status'] for r in conn.execute('SELECT task_id,status FROM reviews')}
+        for task in tasks:
+            task['application_status'] = states.get(task['id'])
+        return tasks
 
     def submit(self, request):
         if not isinstance(request, str) or not request.strip() or len(request) > 3000:
@@ -380,7 +387,13 @@ class Crew:
             with self.connect() as conn:
                 conn.execute('UPDATE tasks SET receipt=? WHERE id=?', (json.dumps(receipt), tid))
             self.record(tid, 'Codex explanation (model claim, inspect against task acceptance conditions):\n'+summary)
-            self.record(tid, 'DONE: Codex completed and project tests passed. Changes remain in the disposable workspace for human review; no automatic merge.')
+            from review import ReviewError
+            try:
+                evidence = next(task['evidence'] for task in self.list() if task['id'] == tid)
+                self.reviews.capture(tid, hashes, workspace, evidence)
+            except (ReviewError, OSError, UnicodeError) as exc:
+                raise OwnerDecision('Review capture needs owner attention: '+str(exc)) from exc
+            self.record(tid, 'Ready for review: Codex completed and project tests passed. Inspect the changes and explicitly approve Apply to update your working project.')
             state = 'DONE'
         except OwnerDecision as exc:
             state = 'NEEDS_OWNER_DECISION'

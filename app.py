@@ -11,6 +11,7 @@ import sqlite3
 from urllib.parse import urlparse
 import uuid
 from crew import Crew, CrewError, CodexAdapter, ClosingConnection
+from review import ReviewError
 
 ROOT = Path(__file__).resolve().parent
 INDEX = ROOT / "index.html"
@@ -103,7 +104,7 @@ def update_seed_state(db_path: Path, seed_id: str, state: str, version: int):
 class Handler(BaseHTTPRequestHandler):
     db_path = DB_DEFAULT
     crew = None
-    server_version = "RikuriOrchard/0.2"
+    server_version = "RikuriOrchard/0.3"
     sys_version = ""
 
     def _reply(self, status: int, content: bytes, content_type: str):
@@ -135,6 +136,14 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(403, {"error": "Invalid host"})
         if self.path in ("/", "/index.html"):
             return self._reply(200, INDEX.read_bytes(), "text/html; charset=utf-8")
+        review_match = re.fullmatch(r"/api/tasks/([0-9a-f-]{36})/review", self.path)
+        if review_match:
+            try:
+                if self.crew is None:
+                    raise ReviewError("Review storage is unavailable; enable the local worker profile.")
+                return self._json(200, {"review": self.crew.reviews.get(review_match.group(1))})
+            except (ReviewError, OSError, ValueError) as exc:
+                return self._json(409, {"error": str(exc)})
         if self.path == "/api/tasks":
             return self._json(200, {"tasks": self.crew.list() if self.crew else [], "enabled": self.crew is not None})
         if self.path == "/api/seeds":
@@ -161,6 +170,12 @@ class Handler(BaseHTTPRequestHandler):
                 if set(data) != {"request"}:
                     raise CrewError("Expected one request field")
                 return self._json(201, {"id": self.crew.submit(data["request"])})
+            operation = re.fullmatch(r"/api/tasks/([0-9a-f-]{36})/(apply|restore)", self.path)
+            if operation:
+                if self.crew is None or set(data) != {"consent", "review_id"}:
+                    raise ReviewError("Expected explicit consent and the reviewed result identifier")
+                review = self.crew.reviews.operate(operation.group(1), data["review_id"], data["consent"], restore=operation.group(2)=="restore")
+                return self._json(200, {"review": review})
             task_match = re.fullmatch(r"/api/tasks/([0-9a-f-]{36})/approve", self.path)
             if task_match:
                 if self.crew is None or set(data) != {"consent"}:
@@ -177,6 +192,8 @@ class Handler(BaseHTTPRequestHandler):
                     raise SeedError("Expected state and version")
                 return self._json(200, {"seed": update_seed_state(self.db_path, match.group(1), data["state"], data["version"])})
             return self._json(404, {"error": "Not found"})
+        except ReviewError as exc:
+            return self._json(409, {"error": str(exc)})
         except (SeedError, CrewError, json.JSONDecodeError) as exc:
             return self._json(400, {"error": str(exc)})
         except sqlite3.Error:
@@ -208,7 +225,7 @@ def main():
         db_path = args.db
         crew = worker
     httpd = ThreadingHTTPServer(("127.0.0.1", args.port), LocalHandler)
-    print(f"Rikuri Orchard v0.2 · http://127.0.0.1:{httpd.server_port}")
+    print(f"Rikuri Orchard v0.3 · http://127.0.0.1:{httpd.server_port}")
     print("Local only. Codex requires task-specific permission. Ctrl+C to stop.")
     try:
         httpd.serve_forever()

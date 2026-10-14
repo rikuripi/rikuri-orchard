@@ -1,6 +1,6 @@
 # Review and apply — implementation contract
 
-Status: specified, not implemented. Next bounded implementation task; no model or apply action is authorized by this file.
+Status: implemented in v0.3 for supported existing-file text changes. No model or apply action is authorized by this file. See VERIFICATION.md for the distinction between native sandbox checks, authored browser fixtures and live model evidence.
 
 ## Owner outcome
 
@@ -42,6 +42,12 @@ GET review must be read-only. POST apply must carry explicit owner consent and t
 8. Task completion or application never starts another task. Application does not require another model inference.
 9. API and rendered diff resist origin misuse and HTML/script content. Verify the real browser result; a backend success string alone is insufficient.
 10. One-off verification scripts/temp projects are cleaned up. Keep reusable regression checks in tests/ and owner recovery/evidence in ignored local storage.
+
+## Implementation evidence and limits
+
+Original and result bytes, modes, digest and application journal are stored durably in the local SQLite reviews table. 52 repository tests pass; 46 application tests also pass inside native Codex command execution. The browser fixture demonstrated Ready for review, exact preview, explicit application, changed served heading and explicit restoration. It made no model call.
+
+Static symlink rejection, parent/project inode checks and immediate content checks are tested. They cannot eliminate every external-writer TOCTOU race or make several replacements globally atomic. Use one process; avoid concurrent external writes. Interrupted operations are detected and require explicit recovery. New files, deletions and binary changes remain unsupported. Older receipts are not retroactively made applyable.
 
 ## Stop condition
 

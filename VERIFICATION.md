@@ -24,10 +24,23 @@ The intended remote is https://github.com/rikuripi/rikuri-orchard.git. GitHub's 
 
 ## Pending
 
-In-app review/approval/apply and recovery; resumable native approvals; independent acceptance checks; robust cancellation and process/resource management; hard spend/resource limits; effective capability audits (including machine-managed configuration); more representative native tasks; other OS/runtime versions; Claude integration; third-party factory comparisons by experiment; Rikuri PI/rikurinode pilots; remote hosting.
+Installation of v0.3 into the owner’s running copy and a fresh authenticated v0.3 task; resumable native approvals; independent acceptance checks; robust cancellation and process/resource management; hard spend/resource limits; effective capability audits (including machine-managed configuration); more representative native tasks; other OS/runtime versions; Claude integration; third-party factory comparisons by experiment; Rikuri PI/rikurinode pilots; remote hosting.
 
 ## Comparison preparation
 
 The project suite now has 27 passing tests: the existing 21 plus six reusable authored-fixture checks. The new cases demonstrate exact-diff acceptance for a heading and behavioral acceptance of fractional means independent of a weak green baseline suite. These checks execute only authored synthetic fixture code, not provider outputs. Fixture projects use TemporaryDirectory and subprocess timeouts and clean up after use. No live comparative model run, new credential access or package installation occurred. The existing native worker's fixed snapshot remains unchanged and includes its original 21 application/adapter tests.
 
 Read-only installed help/version evidence and current official documentation informed the backend decision and REVIEW_APPLY_CONTRACT.md. Claude 2.1.282 has not been declared isolated or benchmarked; its version/authentication differences remain explicit. The M2 UI is specified, not implemented in this commit.
+
+
+## v0.3 review/apply/recovery — October 13, 2026
+
+All 52 repository tests passed: the previous 27 plus 25 reusable review/recovery tests. These cover read-only review, separate explicit consent, exact digest, source/result drift, protected tests, unsupported files, unsafe paths, modes, integrity, one-worker serialization, idempotency, partial failures, journal failure, conflicting external edits, interrupted-operation recovery and HTTP origin protection. Existing Seed Box regressions remain passing.
+
+All 46 application/adapter/review tests passed inside actual native Codex command/exec in a disposable snapshot. The empty disposable profile refused thread/start and turn/start: no inference or account credentials were used. SQLite access and denied outside reads, baseline-test writes and worker network checks passed. No sandbox grant was broadened to fix the review path checks.
+
+An explicitly labeled authored browser fixture on a separate local port ran project tests, captured a heading change, displayed Ready for review and an exact diff, required an unchecked owner consent box, applied the change, displayed Applied and served the changed heading after reload. Separate recovery consent restored the original heading and displayed Previous version restored. Task text containing an HTML image/event-handler payload appeared literally with zero image nodes. This proves the browser/application path for authored fixture results, not a new authenticated model task or general acceptance of arbitrary requests.
+
+The fixture server was stopped and its temporary source/database/profile removed. One-off verification scripts and generated caches were removed; reusable regression tests remain. Original/result backups in real owner storage have not been deleted. The running owner v0.2 app, its data, sign-in profile and task history were not modified by these checks.
+
+Remaining limits include unsupported additions/deletions/binary changes, no global multi-file atomicity, residual external-writer path/content races, single-process use and unverified other OS/runtime versions. Native approval resumption, hard spend/resource caps and independent acceptance checks remain pending.

@@ -2,7 +2,7 @@
 
 A local-first development workshop for Rikuri PI and rikurinode. Orchard keeps tasks bounded, records evidence, and leaves consequential changes under owner control. It currently runs one Codex worker in a disposable copy of the Orchard project.
 
-This repository captures the working v0.2 baseline, including the Homebrew SQLite sandbox correction and the owner-approved heading change. It does not contain owner ideas, task history, credentials or disposable workspaces.
+This repository captures the v0.3 review/apply implementation, including the Homebrew SQLite sandbox correction and the owner-approved heading change. It does not contain owner ideas, task history, credentials or disposable workspaces.
 
 ## Run locally
 
@@ -31,7 +31,7 @@ An existing dedicated profile can be supplied using its absolute path. A profile
 
 Submitting a task only records it. Review the selected files and limits, then explicitly approve that run. The native preflight checks Python and SQLite, and confirms denied outside reads, existing-test edits and worker network access before inference. Homebrew SQLite is readable only through its runtime-library grants; the trusted Python loader runs inside the sandbox using canonical runtime paths.
 
-## What this baseline does
+## What Orchard does
 
 - Preserves the local Seed Box and validated manual idea states.
 - Runs one task, one worker, one model turn, zero Orchard repair/retry rounds.
@@ -40,13 +40,21 @@ Submitting a task only records it. Review the selected files and limits, then ex
 - Runs project unittest discovery under native command/exec after model completion. Failed or zero tests, changed existing tests and missing explanations block success.
 - Stores evidence, input hashes and results locally. Completed changes remain in the disposable workspace for review.
 
-**DONE means a completed model turn and passing project-test gates in that copy. It does not mean applied to your working project, and it does not automatically prove arbitrary acceptance conditions.** The owner-approved heading change was inspected and applied separately. An in-app review/apply workflow is the next product milestone.
+**DONE means a completed model turn and passing project-test gates in that copy. It does not mean applied to your working project, and it does not automatically prove arbitrary acceptance conditions.** The owner-approved heading change was inspected and applied separately. New supported results now have an in-app review/apply workflow.
+
+## Review, apply and recover
+
+After a successful new task, Crew shows **Ready for review**. Open **Review changes** to inspect the exact files, before/after text, full diff and test evidence. Check the separate owner permission box, then choose **Apply reviewed changes**. Run permission alone never authorizes application. Reload for interface changes; restart Orchard after Python source changes.
+
+Applied results offer **Review recovery** and a separate permission box to restore the saved previous version. Original/result bytes, modes, hashes and receipts are retained in the local SQLite database. Back up that database alongside your project; recovery is not a substitute for external backups. Historical tasks without captured reviews require a fresh task.
+
+Only text modifications to existing files in the fixed source manifest are supported. New files, deletions, binary results, protected-test edits and unsafe paths require an owner decision. Drifted source/results and stale review IDs are rejected. Startup marks interrupted operations for explicit recovery; it does not resume writes automatically.
 
 ## Bounds and limitations
 
 One model turn; no automatic Orchard retry; native execution deadline 180 seconds; tests at most 60 seconds inside that deadline; protocol output budget 1 MiB; source snapshot budget 2 MiB. Provider-internal retries and activity may occur within the wall-clock bound. Startup/shutdown adds limited overhead.
 
-Hard token/dollar, memory and workspace disk-growth caps are not implemented. Neither approval resumption nor automated acceptance-condition checks are implemented. Known-pattern secret detection is precautionary and incomplete; inspect files before authorizing transmission. The native host server remains trusted, and machine-managed tool/configuration inheritance needs a fuller capability audit. This is a single-process localhost prototype; no VPS/public-hosting security release is claimed.
+Hard token/dollar, memory and workspace disk-growth caps are not implemented. Neither approval resumption nor automated acceptance-condition checks are implemented. Known-pattern secret detection is precautionary and incomplete; inspect files before authorizing transmission. The native host server remains trusted, and machine-managed tool/configuration inheritance needs a fuller capability audit. Application uses staged file replacements and durable receipts, with rollback for ordinary failures. It is not a globally atomic multi-file transaction. External writers can race path/content checks; ancestor symlink checks and inode rechecks narrow but do not eliminate that race. Use one Orchard process and avoid concurrent external edits during application/recovery. This is a single-process localhost prototype; no VPS/public-hosting security release is claimed.
 
 ## Development plan
 
