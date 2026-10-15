@@ -1,6 +1,6 @@
 # Orchard roadmap
 
-Goal: a dependable software-development workshop that can eventually help build/refine Rikuri PI and rikurinode. Keep Orchard separate until its control contracts are proven. Existing Rikuri project standards remain authoritative when either becomes a target.
+Goal: a dependable software-development workshop that can eventually help build/refine Rikuri PI and rikurinode. Align Orchard contracts with Rikuri from the next scoped design task; keep prototype implementation and data separate until the relevant Rikuri services and migration contracts are proven. Existing Rikuri project standards remain authoritative when either becomes a target.
 
 Each milestone needs one scoped task, an owner-recognizable outcome, permitted paths/capabilities, mandatory checks, evidence and a stopping condition. Passing generic tests cannot replace inspection of the requested behavior. No backlog entry starts work automatically.
 
@@ -13,6 +13,10 @@ Each milestone needs one scoped task, an owner-recognizable outcome, permitted p
 | M4 — Selected capabilities | Claude adapter and a small explicit skills/plugin list | Each capability passes the same bounded-task contract, authentication isolation, permissions and evidence checks; no silently inherited unreviewed hooks/tools | Unrestricted marketplace installation |
 | M5 — Rikuri pilots | Read-only project review followed by one small explicitly approved isolated change | Respect each project's AGENTS.md/standards; protect existing work; reproduce tests; inspect outcome; apply separately with approval | Autonomous broad rewrites |
 | M6 — Broader deployment | Optional private remote operation after local reliability is proven | Authentication, access controls, secure transport, isolated execution, resource controls and tested backup/recovery | Public exposure by default |
+
+## Rikuri contract dependency
+
+The [October 14 integration proposal](RIKURI_INTEGRATION.md) adds a design dependency before further adapter expansion: provider-neutral tasks, stable IDs, authority ownership, acceptance evidence and stop states. This is not authorization to implement another milestone. M5 pilots remain separately approved experiments; later convergence means retiring or migrating prototype infrastructure into proven Rikuri services, not merging independent production control planes. Rikuri's current creative-studio sequence and Foundation-0 gates remain unchanged.
 
 ## Current progress
 
