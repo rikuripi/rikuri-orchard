@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rikuri:orchard-legacy-snapshot-observation:v1",
+  "$comment": "Shape only. Metadata digest checked separately; no authentication or admission proof.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "kind": {
+      "const": "orchard_legacy_snapshot_observation"
+    },
+    "legacy_task_id": {
+      "type": "string",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "metadata_sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reported_status": {
+      "enum": [
+        "NEEDS_OWNER_DECISION",
+        "RUNNING",
+        "DONE",
+        "BLOCKED"
+      ]
+    },
+    "reported_execution": {
+      "enum": [
+        "completed",
+        "running",
+        "unknown"
+      ]
+    },
+    "reported_application": {
+      "enum": [
+        null,
+        "READY",
+        "FAILED",
+        "APPLYING",
+        "APPLIED",
+        "RESTORING",
+        "RESTORED",
+        "INTERRUPTED",
+        "RECOVERY_NEEDED"
+      ]
+    },
+    "execution": {
+      "const": "unverified"
+    },
+    "acceptance": {
+      "const": "unverified"
+    },
+    "application": {
+      "const": "unverified"
+    },
+    "authority": {
+      "const": "none"
+    },
+    "freshness": {
+      "const": "snapshot_only"
+    },
+    "runtime_compatible": {
+      "type": "boolean",
+      "const": false
+    },
+    "missing_runtime_seams": {
+      "type": "array",
+      "const": [
+        "prepare",
+        "start_ack_binding",
+        "observe_cursor",
+        "confirmed_cancel",
+        "trusted_capture",
+        "independent_gate"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "legacy_task_id",
+    "metadata_sha256",
+    "reported_status",
+    "reported_execution",
+    "reported_application",
+    "execution",
+    "acceptance",
+    "application",
+    "authority",
+    "freshness",
+    "runtime_compatible",
+    "missing_runtime_seams"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reported_status": {
+            "const": "DONE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reported_execution": {
+            "const": "completed"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reported_status": {
+            "const": "RUNNING"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reported_execution": {
+            "const": "running"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reported_status": {
+            "const": "BLOCKED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reported_execution": {
+            "const": "unknown"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reported_status": {
+            "const": "NEEDS_OWNER_DECISION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reported_execution": {
+            "const": "unknown"
+          }
+        }
+      }
+    }
+  ]
+}
