@@ -69,3 +69,11 @@ No license has been chosen by the owner yet. Do not assume redistribution rights
 Git tracks source, reusable regression tests and project documentation. macOS/Linux metadata, editor recovery files, private profiles/data, Python/frontend caches, build output and temporary work are ignored. Keep one-off diagnostics in work/ or scratch/ and remove them after use when there is no repeat purpose. Automated tests use disposable temporary directories and stop their child processes.
 
 Keep tests/ regression checks: they are reusable safety evidence, not disposable junk. Do not use blanket cleanup commands on owner data. Existing product runs and backups remain local and retained for review/recovery until an explicit retention policy is implemented; .gitignore does not delete them.
+
+## Rikuri integration direction
+
+Read the [integration reconciliation](docs/RIKURI_INTEGRATION.md) before designing additional adapters. The owner-accepted October 14 ADR direction places Orchard over shared Rikuri services, with early contract alignment and later validated migration. Normal merge and implementation admission remain pending; the current v0.3 behavior and limitations above remain the executable baseline.
+
+The [read-only observation export](docs/OBSERVATION_EXPORT.md) exposes one task as shared-schema metadata with acceptance and application explicitly unverified.
+
+Task cards offer [status details](docs/OBSERVATION_EXPORT.md#task-card-status-details) with execution reports, unverified acceptance and unverified application shown separately.

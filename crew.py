@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-FILES = ('app.py', 'crew.py', 'review.py', 'index.html', 'tests/test_app.py', 'tests/test_crew.py', 'tests/test_review.py')
+FILES = ('app.py', 'crew.py', 'review.py', 'index.html', 'tests/test_app.py', 'tests/test_crew.py', 'tests/test_review.py', 'observations.py', 'contracts/__init__.py', 'contracts/task_contract_v1/__init__.py', 'contracts/task_contract_v1/orchard_bridge.py', 'contracts/task_contract_v1/validate.py', 'contracts/task_contract_v1/orchard-observation.schema.json', 'contracts/task_contract_v1/manifest.json', 'tests/test_observations.py')
 LIMITS = dict(seconds=180, turns=1, retries=0, wire_bytes=1048576, snapshot_bytes=2097152)
 SECRET = re.compile(r'sk-[A-Za-z0-9_-]{12,}|(?i:bearer)\s+[A-Za-z0-9._-]{12,}|(?i:(?:api_key|password|secret)\s*[=:]\s*[\"\'])[A-Za-z0-9_-]{12,}')
 

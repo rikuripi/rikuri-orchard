@@ -1,0 +1,9 @@
+{
+  "source": "Rikuri-PI/docs/architecture/contracts/task-contract-v1",
+  "authority": "shared source; distribution only",
+  "sha256": {
+    "orchard_bridge.py": "3b4abfa72e1962bdce445f4e1fc08b38341e9d440481c27786972560dd887355",
+    "validate.py": "9cad85b7d2175fbf5262c9b32cd156ae5c4038bb91af8e1f517dd5c12885d39a",
+    "orchard-observation.schema.json": "572efe4e199094e4d091ccfc6f9088edf1ec289e60eb256601a7cbce1d887243"
+  }
+}

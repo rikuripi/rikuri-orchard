@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 import uuid
 from crew import Crew, CrewError, CodexAdapter, ClosingConnection
 from review import ReviewError
+from observations import export_observation, ObservationError
 
 ROOT = Path(__file__).resolve().parent
 INDEX = ROOT / "index.html"
@@ -136,6 +137,19 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(403, {"error": "Invalid host"})
         if self.path in ("/", "/index.html"):
             return self._reply(200, INDEX.read_bytes(), "text/html; charset=utf-8")
+        observation_match = re.fullmatch(r"/api/tasks/([0-9a-f-]{36})/observation", self.path)
+        if observation_match:
+            if not self._allowed_origin():
+                return self._json(403, {"error": "Request origin not permitted"})
+            if self.crew is None:
+                return self._json(409, {"error": "Observation storage unavailable"})
+            try:
+                observation = export_observation(self.crew.db, observation_match.group(1))
+                if observation is None:
+                    return self._json(404, {"error": "Task not found"})
+                return self._json(200, {"observation": observation})
+            except ObservationError:
+                return self._json(409, {"error": "Observation unavailable or unsupported; no verification claimed"})
         review_match = re.fullmatch(r"/api/tasks/([0-9a-f-]{36})/review", self.path)
         if review_match:
             try:
