@@ -47,3 +47,7 @@ The existing M0–M6 milestone order and current progress above are unchanged. S
 | M6 remote operation | Authenticated device roles/leases, sequenced streams, revocation, private caches, resource fairness and policy-preserving recovery | OA-08 after local reliability and matching Pi Link/governance admission; compute sharing never implies knowledge sharing |
 
 Persistent cross-episode learning and trajectory-to-training reuse remain later research dependent on Pi Stage 4 evidence, Stage 6 governance and Stage 10 scope. Pi Foundation gates, Stage 2 creative studio and Stage 8 optional developer pack are preserved. No Docker/Podman/OpenShell/OpenSandbox/VM/GPU vendor is newly selected, and no full family mesh or multi-agent fleet is promised by these docs.
+
+## November 6 owner acceptance of shared architectural direction
+
+The owner accepted Pi ADRs 0020–0022 after independent review. Earlier proposed labels record the proposal origin; architectural adoption is complete, with normal merge pending. This accepts the documented Orchard alignment and stage mapping, without enabling a milestone, new adapter, migration or runtime behavior. Feature-specific acceptance remains Not yet proven; implementation requires separate scoped work and predecessor gates. [Acceptance record](build-records/2026-11-06-adr-0020-0022-owner-acceptance.md).

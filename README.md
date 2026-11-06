@@ -81,3 +81,7 @@ Task cards offer [status details](docs/OBSERVATION_EXPORT.md#task-card-status-de
 ## Proposed vault and adaptive execution alignment — November 6
 
 The [future admission specification](docs/ADAPTIVE_REFLECTION_ACCEPTANCE.md) reconciles the supplied vault/sandbox/mesh amendments and AREX reflection findings with Pi ownership and the [current roadmap](docs/ROADMAP.md). This is documentation only: current prototype behavior, receipt meanings and pending limitations remain as recorded in [VERIFICATION.md](VERIFICATION.md). No new vault, mesh, runtime adapter, adaptive model routing or training feature is implemented. [Change record](docs/build-records/2026-11-06-vault-mesh-adaptive-reflection.md).
+
+## November 6 owner acceptance of shared architectural direction
+
+The owner accepted Pi ADRs 0020–0022 after independent review. Earlier proposed labels record the proposal origin; architectural adoption is complete, with normal merge pending. This accepts the documented Orchard alignment and stage mapping, without enabling a milestone, new adapter, migration or runtime behavior. Feature-specific acceptance remains Not yet proven; implementation requires separate scoped work and predecessor gates. [Acceptance record](docs/build-records/2026-11-06-adr-0020-0022-owner-acceptance.md).
