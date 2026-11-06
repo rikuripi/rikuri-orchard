@@ -33,3 +33,9 @@ Web pages, GitHub issues, README instructions, source comments, generated tool o
 ## Learning safely
 
 A repeated failure may produce a lesson candidate with reproduction, evidence, scope, confidence, counterexamples and proposed intervention. Evaluate against past failures and clean tasks. Adopt only after independent verification; version, monitor and retain rollback. Hard authorization boundaries cannot be relaxed through learned performance scores.
+
+## November 6 proposed adaptive reflection boundaries
+
+[Adaptive admission specification](ADAPTIVE_REFLECTION_ACCEPTANCE.md) refines future profiles/skills/feedback. A capable model may direct task-local experimentation within the exact existing task contract; deterministic policy, hard budgets, independent acceptance, application approval and finite stopping remain external. Reducing scaffolding cannot remove a required check or broaden a worker/child grant. No new worker, delegation, backend or learned behavior is enabled.
+
+Operational procedures are versioned skills over governed knowledge, not a second truth store. Failures and lessons are candidate evidence with provenance, privacy, retention and validation; only a governed promotion may make them persistent. Separate execution completion, task acceptance, durable commit and application; preserve historical v0.3 receipt meanings. Unknown resource price cannot pass a hard-spend bound. Stop at accepted success, cancellation, policy failure or existing retry/budget/time bounds; future no-progress rules need scoped tests. Source experiments never authorize self-modifying protected policy or continuous weight training.

@@ -33,3 +33,17 @@ M1: complete a concrete comparison plan and decide the minimum integration surfa
 - Do not start new tasks, branches, PRs, model turns or deployment as a side effect of applying a result.
 
 No calendar deadline is promised. Progress is measured by completed acceptance gates.
+
+## November 6 proposed amendment crosswalk
+
+The existing M0–M6 milestone order and current progress above are unchanged. Source amendment stage labels are not Orchard milestone numbers. This documentation task starts no milestone and proves no new capability. [Future acceptance specification](ADAPTIVE_REFLECTION_ACCEPTANCE.md) owns the OA cases.
+
+| Existing milestone | Proposed refinement, when separately adopted/scoped | Required evidence |
+| --- | --- | --- |
+| M1 controlled comparison | Compare conventional/model-directed/hybrid strategy with exact execution identities and matched task/tools/skills/budgets; isolate skill and round effects | OA-01; live trials still require account/budget/isolation authorization |
+| M3 reliability | Feedback/checkpoints, typed failures, bounded no-progress termination, resource accounting and durable recovery; actual sandbox capability introspection | OA-02/04/07; no claim current native worker supplies all controls |
+| M4 selected capabilities | Minimal authorized operational skills, capability profiles and measured improvement efficiency; versioned promotion/rollback | OA-01/03/05; no adaptive default before evidence |
+| M5 Pi pilots | Vault scope/portability and execution-envelope compatibility through Pi-owned interfaces; prototype stores remain separate | OA-06/07 after Pi dependencies; no automatic production migration |
+| M6 remote operation | Authenticated device roles/leases, sequenced streams, revocation, private caches, resource fairness and policy-preserving recovery | OA-08 after local reliability and matching Pi Link/governance admission; compute sharing never implies knowledge sharing |
+
+Persistent cross-episode learning and trajectory-to-training reuse remain later research dependent on Pi Stage 4 evidence, Stage 6 governance and Stage 10 scope. Pi Foundation gates, Stage 2 creative studio and Stage 8 optional developer pack are preserved. No Docker/Podman/OpenShell/OpenSandbox/VM/GPU vendor is newly selected, and no full family mesh or multi-agent fleet is promised by these docs.

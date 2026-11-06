@@ -77,3 +77,7 @@ Read the [integration reconciliation](docs/RIKURI_INTEGRATION.md) before designi
 The [read-only observation export](docs/OBSERVATION_EXPORT.md) exposes one task as shared-schema metadata with acceptance and application explicitly unverified.
 
 Task cards offer [status details](docs/OBSERVATION_EXPORT.md#task-card-status-details) with execution reports, unverified acceptance and unverified application shown separately.
+
+## Proposed vault and adaptive execution alignment — November 6
+
+The [future admission specification](docs/ADAPTIVE_REFLECTION_ACCEPTANCE.md) reconciles the supplied vault/sandbox/mesh amendments and AREX reflection findings with Pi ownership and the [current roadmap](docs/ROADMAP.md). This is documentation only: current prototype behavior, receipt meanings and pending limitations remain as recorded in [VERIFICATION.md](VERIFICATION.md). No new vault, mesh, runtime adapter, adaptive model routing or training feature is implemented. [Change record](docs/build-records/2026-11-06-vault-mesh-adaptive-reflection.md).

@@ -21,3 +21,9 @@ The single Rikuri-owned [TaskContract v1 draft](../../Rikuri-PI/docs/architectur
 ## Adapter boundary design
 
 Use the Rikuri-owned [adapter interface/evidence-handoff draft](../../Rikuri-PI/docs/architecture/contracts/task-contract-v1/ADAPTER_INTERFACE.md) for the next interface implementation proposal. It preserves native execution observations, independent acceptance and separate apply consent. The current CodexAdapter.run and Stage00 API do not yet implement this seam; no worker or migration is authorized by the document.
+
+## November 6 amendment reconciliation
+
+[Adaptive admission specification](ADAPTIVE_REFLECTION_ACCEPTANCE.md) records proposed Pi ADR 0020–0022 alignment and scope conflicts. Vault ownership, keys, canonical state and transaction promotion remain Rikuri responsibilities; Orchard uses scoped broker/context/execution interfaces. Model capability profiles, versioned skills and grounded experimentation compose shared services, never a second production database, router or policy authority. Existing TaskContract v1 and observation schema are untouched; new semantics need explicit versioned compatibility tests. Prototype data imports still require a validated, reversible migration and may not strengthen historical DONE receipts.
+
+Minimal single-node seams precede any remote integration. Pi existing product Stage 3 owns Link, Stage 4 measured harness/scheduling, Stage 6 human/team governance, Stage 7 replication/resource integration and Stage 10 learned reflection. The source mesh Stage 2/3/4 order cannot replace those dependencies. Existing Foundation encrypted custody/restore, Option C and credential-free-worker scope remain. No implemented vault, mesh, strong VM isolation or adaptive improvement is claimed.
